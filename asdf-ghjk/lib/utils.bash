@@ -144,6 +144,10 @@ get_expected_checksum() {
   echo "$checksums" | grep "$archive_name" | awk '{print $1}' | head -1
 }
 
+escape_sed_regex() {
+  echo "$1" | sed -e 's/[]\/$*.^[]/\\&/g'
+}
+
 get_download_url() {
   local version="$1"
   local os
@@ -158,8 +162,21 @@ get_download_url() {
   arch_alt="$(get_arch_alt)"
 
   local pattern="ghjk-{arch}-{os}.tar.gz"
+  local safe_version=$(escape_sed_regex "$version")
+  local safe_os=$(escape_sed_regex "$os")
+  local safe_Os=$(escape_sed_regex "$Os")
+  local safe_os_alt=$(escape_sed_regex "$os_alt")
+  local safe_arch=$(escape_sed_regex "$arch")
+  local safe_arch_alt=$(escape_sed_regex "$arch_alt")
+
   local asset_name
-  asset_name="$(echo "$pattern" | sed "s/{version}/$version/g" | sed "s/{os}/$os/g" | sed "s/{Os}/$Os/g" | sed "s/{os_alt}/$os_alt/g" | sed "s/{arch}/$arch/g" | sed "s/{arch_alt}/$arch_alt/g")"
+  asset_name="$(echo "$pattern" | \
+                sed "s/{version}/$safe_version/g" | \
+                sed "s/{os}/$safe_os/g" | \
+                sed "s/{Os}/$safe_Os/g" | \
+                sed "s/{os_alt}/$safe_os_alt/g" | \
+                sed "s/{arch}/$safe_arch/g" | \
+                sed "s/{arch_alt}/$safe_arch_alt/g")"
 
   # Try with v prefix first
   local url="https://github.com/$TOOL_REPO/releases/download/v$version/$asset_name"

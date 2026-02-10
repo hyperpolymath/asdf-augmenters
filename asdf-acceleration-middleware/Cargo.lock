@@ -99,7 +99,7 @@ checksum = "7d902e3d592a523def97af8f317b08ce16b7ab854c1985a0c671e6f15cebc236"
 
 [[package]]
 name = "asdf-accelerate"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "anyhow",
  "asdf-cache",
@@ -119,7 +119,7 @@ dependencies = [
 
 [[package]]
 name = "asdf-bench"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "anyhow",
  "asdf-core",
@@ -133,7 +133,7 @@ dependencies = [
 
 [[package]]
 name = "asdf-cache"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "anyhow",
  "bincode",
@@ -148,7 +148,7 @@ dependencies = [
 
 [[package]]
 name = "asdf-config"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "anyhow",
  "asdf-parallel",
@@ -163,7 +163,7 @@ dependencies = [
 
 [[package]]
 name = "asdf-core"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "anyhow",
  "duct",
@@ -177,7 +177,7 @@ dependencies = [
 
 [[package]]
 name = "asdf-discover"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "anyhow",
  "asdf-core",
@@ -191,7 +191,7 @@ dependencies = [
 
 [[package]]
 name = "asdf-metrics"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "anyhow",
  "serde",
@@ -203,7 +203,7 @@ dependencies = [
 
 [[package]]
 name = "asdf-monitor"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "anyhow",
  "asdf-core",
@@ -216,7 +216,7 @@ dependencies = [
 
 [[package]]
 name = "asdf-parallel"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "anyhow",
  "asdf-core",

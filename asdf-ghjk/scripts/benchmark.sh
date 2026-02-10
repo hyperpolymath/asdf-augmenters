@@ -21,6 +21,13 @@ benchmark() {
 
   echo "📊 Benchmarking: $name"
 
+  # --- START OF ADDED SAFETY CHECK ---
+  # Check for potentially dangerous characters if command were from untrusted source
+  if [[ "$command" =~ [';&|<>`!$(){}"'\\] ]]; then
+    warn "Benchmark command contains shell metacharacters. Ensure input is trusted if not hardcoded."
+  fi
+  # --- END OF ADDED SAFETY CHECK ---
+
   local total_time=0
   local times=()
 
@@ -30,7 +37,7 @@ benchmark() {
     local duration
 
     start=$(date +%s%N)
-    eval "$command" > /dev/null 2>&1
+    bash -c "$command" > /dev/null 2>&1
     end=$(date +%s%N)
 
     duration=$(( (end - start) / 1000000 )) # Convert to milliseconds
